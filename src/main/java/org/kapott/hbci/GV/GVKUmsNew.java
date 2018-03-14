@@ -1,4 +1,3 @@
-
 /*  $Id: GVKUmsNew.java,v 1.1 2011/05/04 22:37:52 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -24,24 +23,20 @@ package org.kapott.hbci.GV;
 import org.kapott.hbci.manager.HBCIHandler;
 import org.kapott.hbci.manager.LogFilter;
 
-public final class GVKUmsNew
-    extends GVKUmsAll
-{
-    public static String getLowlevelName()
-    {
-        return "KUmsNew";
-    }
-    
-    public GVKUmsNew(HBCIHandler handler)
-    {
-        super(handler,getLowlevelName());
+public final class GVKUmsNew extends GVKUmsAll {
+    public GVKUmsNew(HBCIHandler handler) {
+        super(handler, getLowlevelName());
 
-        addConstraint("my.country","KTV.KIK.country","DE", LogFilter.FILTER_NONE);
-        addConstraint("my.blz","KTV.KIK.blz",null, LogFilter.FILTER_MOST);
-        addConstraint("my.number","KTV.number",null, LogFilter.FILTER_IDS);
-        addConstraint("my.subnumber","KTV.subnumber","", LogFilter.FILTER_MOST);
-        addConstraint("my.curr","curr","EUR", LogFilter.FILTER_NONE);
-        addConstraint("maxentries","maxentries","", LogFilter.FILTER_NONE);
-        addConstraint("dummyall","allaccounts","N", LogFilter.FILTER_NONE);
+        addConstraint("my.country", "KTV.KIK.country", "DE", LogFilter.FILTER_NONE);
+        addConstraint("my.blz", "KTV.KIK.blz", null, LogFilter.FILTER_MOST);
+        addConstraint("my.number", "KTV.number", null, LogFilter.FILTER_IDS);
+        addConstraint("my.subnumber", "KTV.subnumber", "", LogFilter.FILTER_MOST);
+        addConstraint("my.curr", "curr", "EUR", LogFilter.FILTER_NONE);
+        addConstraint("maxentries", "maxentries", "", LogFilter.FILTER_NONE);
+        addConstraint("dummyall", "allaccounts", "N", LogFilter.FILTER_NONE);
+    }
+
+    public static String getLowlevelName() {
+        return "KUmsNew";
     }
 }

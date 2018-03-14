@@ -1,4 +1,3 @@
-
 /*  $Id: SyntaxCode.java,v 1.1 2011/05/04 22:37:55 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -21,30 +20,22 @@
 
 package org.kapott.hbci.datatypes;
 
-
-public class SyntaxCode
-     extends SyntaxAN
-{
-    public SyntaxCode(String x,int minlen,int maxlen)
-    {
-        super(x,minlen,maxlen);
+public class SyntaxCode extends SyntaxAN {
+    public SyntaxCode(String x, int minlen, int maxlen) {
+        super(x, minlen, maxlen);
     }
 
-    public void init(String x,int minlen,int maxlen)
-    {
-        super.init(x,minlen,maxlen);
+    public SyntaxCode(StringBuffer res, int minsize, int maxsize) {
+        super(res, minsize, maxsize);
     }
 
     // --------------------------------------------------------------------------------
 
-    public SyntaxCode(StringBuffer res,int minsize,int maxsize)
-    {
-        super(res,minsize,maxsize);
+    public void init(String x, int minlen, int maxlen) {
+        super.init(x, minlen, maxlen);
     }
-    
-    public void init(StringBuffer res,int minsize,int maxsize)
-    {
-        super.init(res,minsize,maxsize);
+
+    public void init(StringBuffer res, int minsize, int maxsize) {
+        super.init(res, minsize, maxsize);
     }
-    
 }

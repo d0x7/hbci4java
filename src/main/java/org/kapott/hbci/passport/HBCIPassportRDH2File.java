@@ -1,4 +1,3 @@
-
 /*  $Id: HBCIPassportRDH2File.java,v 1.1 2011/05/04 22:37:43 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -23,19 +22,19 @@ package org.kapott.hbci.passport;
 
 import org.kapott.hbci.manager.HBCIUtils;
 
-/** Compatibility class for old applications using "RDH2File" passport variant
- * @Deprecated Use RDHXFile instead */
-public class HBCIPassportRDH2File
-    extends HBCIPassportRDHXFile
-{
-    protected String getCompatName()
-    {
-        HBCIUtils.log("RDH2File should not be used any longer - use RDHXFile instead!", HBCIUtils.LOG_WARN);
-        return "RDH2File";
+/**
+ * Compatibility class for old applications using "RDH2File" passport variant @Deprecated Use
+ * RDHXFile instead
+ */
+public class HBCIPassportRDH2File extends HBCIPassportRDHXFile {
+    public HBCIPassportRDH2File(Object initObject) {
+        super(initObject);
     }
 
-    public HBCIPassportRDH2File(Object initObject)
-    {
-        super(initObject);
+    protected String getCompatName() {
+        HBCIUtils.log(
+                "RDH2File should not be used any longer - use RDHXFile instead!",
+                HBCIUtils.LOG_WARN);
+        return "RDH2File";
     }
 }

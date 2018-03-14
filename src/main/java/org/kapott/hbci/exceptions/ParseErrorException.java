@@ -1,4 +1,3 @@
-
 /*  $Id: ParseErrorException.java,v 1.1 2011/05/04 22:38:00 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -21,16 +20,12 @@
 
 package org.kapott.hbci.exceptions;
 
-public class ParseErrorException
-     extends HBCI_Exception
-{
-    public ParseErrorException(String st)
-    {
+public class ParseErrorException extends HBCI_Exception {
+    public ParseErrorException(String st) {
         super(st);
     }
-    
-    public ParseErrorException(String st,Exception e)
-    {
-        super(st,e);
+
+    public ParseErrorException(String st, Exception e) {
+        super(st, e);
     }
 }

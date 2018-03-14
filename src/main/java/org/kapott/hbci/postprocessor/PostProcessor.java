@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * PostProcessor Klasse welche es erlaubt z.B. die Customer Id
- * während sie gesetzt wird zu manipulieren. Dies ermöglicht es
- * eine automatische Korrektur vorzunehmen wie beispielsweise bei
+ * PostProcessor Klasse welche es erlaubt z.B. die Customer Id während sie gesetzt wird zu
+ * manipulieren. Dies ermöglicht es eine automatische Korrektur vorzunehmen wie beispielsweise bei
  * der Consorsbank welche am Ende der Customer Id eine "001" benötigt.
  */
 public abstract class PostProcessor {
@@ -19,7 +18,8 @@ public abstract class PostProcessor {
 
     public PostProcessor(String blz) {
         if (postProcessors.containsKey(blz))
-            throw new IllegalStateException(String.format("PostProcessor for BLZ %s already registered", blz));
+            throw new IllegalStateException(
+                    String.format("PostProcessor for BLZ %s already registered", blz));
         postProcessors.put(blz, this);
     }
 
@@ -30,6 +30,7 @@ public abstract class PostProcessor {
     public String processHBCIVersion(String hbciVersion) {
         return hbciVersion;
     }
+
     public String processCountry(String country) {
         return country;
     }

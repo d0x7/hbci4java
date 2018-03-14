@@ -4,7 +4,8 @@ import org.kapott.hbci.exceptions.HBCI_Exception;
 
 public class SwiftLegacy {
 
-    public static String getTagValue(final String st, final String tag, final String[] suffixes, int counter) {
+    public static String getTagValue(
+            final String st, final String tag, final String[] suffixes, int counter) {
         // TODO: hier noch die parser-Änderungen einbauen, die schon bei
         // getTagValue() drin sind ("\r\n:" anstatt ":" suchen)
         String ret = null;
@@ -41,7 +42,8 @@ public class SwiftLegacy {
                     }
                 }
                 if (endpos == -1) {
-                    throw new HBCI_Exception("*** invalid swift stream - no end of tag found: tag=" + tag);
+                    throw new HBCI_Exception(
+                            "*** invalid swift stream - no end of tag found: tag=" + tag);
                 }
                 ret = st.substring(startpos + mytag.length() + 2, endpos);
             }
@@ -54,8 +56,8 @@ public class SwiftLegacy {
         return ret;
     }
 
-
-    public static String getLineFieldValue(final String stream, final String linenum, int fieldnum) {
+    public static String getLineFieldValue(
+            final String stream, final String linenum, int fieldnum) {
         // TODO: hier evtl. sauberer parsen
 
         String ret = null;

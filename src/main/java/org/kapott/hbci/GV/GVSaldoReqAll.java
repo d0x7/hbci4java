@@ -1,4 +1,3 @@
-
 /*  $Id: GVSaldoReqAll.java,v 1.1 2011/05/04 22:37:54 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -24,29 +23,24 @@ package org.kapott.hbci.GV;
 import org.kapott.hbci.manager.HBCIHandler;
 import org.kapott.hbci.manager.LogFilter;
 
-public final class GVSaldoReqAll
-    extends GVSaldoReq
-{
-    public static String getLowlevelName()
-    {
+public final class GVSaldoReqAll extends GVSaldoReq {
+    public GVSaldoReqAll(HBCIHandler handler) {
+        super(handler, getLowlevelName());
+
+        addConstraint("maxentries", "maxentries", "", LogFilter.FILTER_NONE);
+        addConstraint("my.country", "KTV.KIK.country", "DE", LogFilter.FILTER_NONE);
+        addConstraint("my.blz", "KTV.KIK.blz", null, LogFilter.FILTER_MOST);
+        addConstraint("my.number", "KTV.number", null, LogFilter.FILTER_IDS);
+        addConstraint("my.subnumber", "KTV.subnumber", "", LogFilter.FILTER_MOST);
+        addConstraint("my.curr", "curr", "EUR", LogFilter.FILTER_NONE);
+        addConstraint("dummyall", "allaccounts", "J", LogFilter.FILTER_NONE);
+    }
+
+    public static String getLowlevelName() {
         return "Saldo";
     }
-    
-    public GVSaldoReqAll(HBCIHandler handler)
-    {
-        super(handler,getLowlevelName());
 
-        addConstraint("maxentries","maxentries","", LogFilter.FILTER_NONE);
-        addConstraint("my.country","KTV.KIK.country","DE", LogFilter.FILTER_NONE);
-        addConstraint("my.blz","KTV.KIK.blz",null, LogFilter.FILTER_MOST);
-        addConstraint("my.number","KTV.number",null, LogFilter.FILTER_IDS);
-        addConstraint("my.subnumber","KTV.subnumber","", LogFilter.FILTER_MOST);
-        addConstraint("my.curr","curr","EUR", LogFilter.FILTER_NONE);
-        addConstraint("dummyall","allaccounts", "J", LogFilter.FILTER_NONE);
-    }
-    
-    public void verifyConstraints()
-    {
+    public void verifyConstraints() {
         super.verifyConstraints();
         checkAccountCRC("my");
     }

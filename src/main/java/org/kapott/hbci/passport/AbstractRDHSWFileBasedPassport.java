@@ -1,4 +1,3 @@
-
 /*  $Id: AbstractRDHSWFileBasedPassport.java,v 1.1 2011/05/04 22:37:43 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -23,15 +22,20 @@ package org.kapott.hbci.passport;
 
 import javax.crypto.SecretKey;
 
-public abstract class AbstractRDHSWFileBasedPassport 
-	extends AbstractRDHSWPassport 
-{
-    private String    filename;
+public abstract class AbstractRDHSWFileBasedPassport extends AbstractRDHSWPassport {
+    protected static final byte[] CIPHER_SALT = {
+        (byte) 0x26,
+        (byte) 0x19,
+        (byte) 0x38,
+        (byte) 0xa7,
+        (byte) 0x99,
+        (byte) 0xbc,
+        (byte) 0xf1,
+        (byte) 0x55
+    };
+    protected static final int CIPHER_ITERATIONS = 987;
+    private String filename;
     private SecretKey passportKey;
-    
-    protected final static byte[] CIPHER_SALT={(byte)0x26,(byte)0x19,(byte)0x38,(byte)0xa7,
-                                               (byte)0x99,(byte)0xbc,(byte)0xf1,(byte)0x55};
-    protected final static int CIPHER_ITERATIONS=987;
 
     protected AbstractRDHSWFileBasedPassport(Object init) {
         super(init);

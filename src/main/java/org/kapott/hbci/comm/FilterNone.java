@@ -1,4 +1,3 @@
-
 /*  $Id: FilterNone.java,v 1.1 2011/05/04 22:37:51 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -25,25 +24,20 @@ import org.kapott.hbci.exceptions.HBCI_Exception;
 import org.kapott.hbci.manager.HBCIUtils;
 import org.kapott.hbci.manager.HBCIUtilsInternal;
 
-public final class FilterNone
-    extends Filter
-{
-    public FilterNone()
-    {
-        HBCIUtils.log("using filter: none",HBCIUtils.LOG_DEBUG);
+public final class FilterNone extends Filter {
+    public FilterNone() {
+        HBCIUtils.log("using filter: none", HBCIUtils.LOG_DEBUG);
     }
-                                
-    public byte[] encode(String st)
-    {
+
+    public byte[] encode(String st) {
         try {
             return st.getBytes(Comm.ENCODING);
         } catch (Exception e) {
-            throw new HBCI_Exception(HBCIUtilsInternal.getLocMsg("EXCMSG_ISOERR"),e);
+            throw new HBCI_Exception(HBCIUtilsInternal.getLocMsg("EXCMSG_ISOERR"), e);
         }
     }
-    
-    public String decode(String st)
-    {
+
+    public String decode(String st) {
         return st;
     }
 }

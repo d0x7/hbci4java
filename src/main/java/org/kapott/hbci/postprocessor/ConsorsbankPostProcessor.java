@@ -1,8 +1,6 @@
 package org.kapott.hbci.postprocessor;
 
-/**
- * PostProcessor für Consorsbank Konten
- */
+/** PostProcessor für Consorsbank Konten */
 public class ConsorsbankPostProcessor extends PostProcessor {
 
     public ConsorsbankPostProcessor() {

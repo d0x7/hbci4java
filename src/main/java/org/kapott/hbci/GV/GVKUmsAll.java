@@ -1,4 +1,3 @@
-
 /*  $Id: GVKUmsAll.java,v 1.1 2011/05/04 22:37:52 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -21,69 +20,62 @@
 
 package org.kapott.hbci.GV;
 
-
-import java.util.Properties;
-
 import org.kapott.hbci.GV_Result.GVRKUms;
 import org.kapott.hbci.manager.HBCIHandler;
 import org.kapott.hbci.manager.LogFilter;
 import org.kapott.hbci.status.HBCIMsgStatus;
 import org.kapott.hbci.swift.Swift;
 
-public class GVKUmsAll
-    extends HBCIJobImpl
-{
-    public static String getLowlevelName()
-    {
-        return "KUmsZeit";
-    }
-    
-    public GVKUmsAll(HBCIHandler handler,String name)
-    {
+import java.util.Properties;
+
+public class GVKUmsAll extends HBCIJobImpl {
+    public GVKUmsAll(HBCIHandler handler, String name) {
         super(handler, name, new GVRKUms());
     }
 
-    public GVKUmsAll(HBCIHandler handler)
-    {
-        this(handler,getLowlevelName());
+    public GVKUmsAll(HBCIHandler handler) {
+        this(handler, getLowlevelName());
 
-        addConstraint("my.country","KTV.KIK.country","DE", LogFilter.FILTER_NONE);
-        addConstraint("my.blz","KTV.KIK.blz",null, LogFilter.FILTER_MOST);
-        addConstraint("my.number","KTV.number",null, LogFilter.FILTER_IDS);
-        addConstraint("my.subnumber","KTV.subnumber","", LogFilter.FILTER_MOST);
-        //currency wird in neueren Versionen nicht mehr benötigt, constraint liefert unnötige Warnung
-        //im Prinzip müsste es möglich sein, die constraints versionsabhängig zu definieren
-        //addConstraint("my.curr","curr","EUR", LogFilter.FILTER_NONE);
-        addConstraint("startdate","startdate","", LogFilter.FILTER_NONE);
-        addConstraint("enddate","enddate","", LogFilter.FILTER_NONE);
-        addConstraint("maxentries","maxentries","", LogFilter.FILTER_NONE);
-        
-        addConstraint("dummy","allaccounts","N", LogFilter.FILTER_NONE);
+        addConstraint("my.country", "KTV.KIK.country", "DE", LogFilter.FILTER_NONE);
+        addConstraint("my.blz", "KTV.KIK.blz", null, LogFilter.FILTER_MOST);
+        addConstraint("my.number", "KTV.number", null, LogFilter.FILTER_IDS);
+        addConstraint("my.subnumber", "KTV.subnumber", "", LogFilter.FILTER_MOST);
+        // currency wird in neueren Versionen nicht mehr benötigt, constraint liefert unnötige
+        // Warnung
+        // im Prinzip müsste es möglich sein, die constraints versionsabhängig zu definieren
+        // addConstraint("my.curr","curr","EUR", LogFilter.FILTER_NONE);
+        addConstraint("startdate", "startdate", "", LogFilter.FILTER_NONE);
+        addConstraint("enddate", "enddate", "", LogFilter.FILTER_NONE);
+        addConstraint("maxentries", "maxentries", "", LogFilter.FILTER_NONE);
+
+        addConstraint("dummy", "allaccounts", "N", LogFilter.FILTER_NONE);
     }
 
-    protected void extractResults(HBCIMsgStatus msgstatus,String header,int idx)
-    {
-        Properties result=msgstatus.getData();
-        GVRKUms    umsResult=(GVRKUms)jobResult; 
-        
+    public static String getLowlevelName() {
+        return "KUmsZeit";
+    }
+
+    protected void extractResults(HBCIMsgStatus msgstatus, String header, int idx) {
+        Properties result = msgstatus.getData();
+        GVRKUms umsResult = (GVRKUms) jobResult;
+
         StringBuffer paramName = new StringBuffer(header).append(".booked");
-        String       rawData = result.getProperty(paramName.toString());
-        if (rawData!=null) {
+        String rawData = result.getProperty(paramName.toString());
+        if (rawData != null) {
             umsResult.appendMT940Data(Swift.decodeUmlauts(rawData));
         }
-        
+
         paramName = new StringBuffer(header).append(".notbooked");
         rawData = result.getProperty(paramName.toString());
-        if (rawData!=null) {
+        if (rawData != null) {
             umsResult.appendMT942Data(Swift.decodeUmlauts(rawData));
         }
-        
+
         // TODO: this is for compatibility reasons only
-        jobResult.storeResult("notbooked",result.getProperty(header+".notbooked"));
+        jobResult.storeResult("notbooked", result.getProperty(header + ".notbooked"));
     }
-    
-    public void verifyConstraints()
-    {
+
+    public void verifyConstraints() {
         super.verifyConstraints();
         checkAccountCRC("my");
     }

@@ -1,4 +1,3 @@
-
 /*  $Id: MACField.java,v 1.1 2011/05/04 22:37:48 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -21,44 +20,34 @@
 
 package org.kapott.hbci.passport.rdhXfile;
 
-
-public class MACField
-    extends TLV
-{
-    public MACField()
-    {
+public class MACField extends TLV {
+    public MACField() {
         super(0x4d44);
     }
-    
-    public MACField(TLV tlv)
-    {
+
+    public MACField(TLV tlv) {
         super(tlv);
     }
-    
-    public byte[] getMac()
-    {
+
+    public byte[] getMac() {
         return this.getData();
     }
-    
-    public void setMac(byte[] mac)
-    {
+
+    public void setMac(byte[] mac) {
         this.setData(mac);
     }
-    
-    public void updateData()
-    {
-    }
-    
-    public String toString()
-    {
-        StringBuffer ret=new StringBuffer();
-        byte[]       mac=this.getData();
+
+    public void updateData() {}
+
+    public String toString() {
+        StringBuffer ret = new StringBuffer();
+        byte[] mac = this.getData();
         ret.append("macfield: mac=");
-        for (int i=0;i<mac.length;i++) {
-            int x=mac[i]&0xFF;
-            ret.append(Integer.toString(x,16)+" ");
+        for (int i = 0; i < mac.length; i++) {
+            int x = mac[i] & 0xFF;
+            ret.append(Integer.toString(x, 16) + " ");
         }
-        
+
         return ret.toString();
     }
 }

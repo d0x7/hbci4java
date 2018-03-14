@@ -1,4 +1,3 @@
-
 /*  $Id: HBCIKernelFactory.java,v 1.1 2011/05/04 22:37:46 willuhn Exp $
 
     This file is part of hbci4java
@@ -24,14 +23,14 @@ package org.kapott.hbci.manager;
 import org.kapott.hbci.passport.HBCIPassport;
 
 /** Factory-Klasse für das Erzeugen von HBCI-Kernel-Objekten */
-public class HBCIKernelFactory
-{
-    /** Neues HBCI-Kernel-Objekt erzeugen.
-     * @param hbciversion 
-     * {@link HBCIHandler#HBCIHandler(String,HBCIPassport) HBCI-Versionsnummer},
-     * für die ein Kernel-Objekt erzeugt werden soll */
-    public static HBCIKernel getKernel(IHandlerData parentHandlerData,String hbciversion) 
-    {
-        return new HBCIKernelImpl(parentHandlerData,hbciversion);
+public class HBCIKernelFactory {
+    /**
+     * Neues HBCI-Kernel-Objekt erzeugen.
+     *
+     * @param hbciversion {@link HBCIHandler#HBCIHandler(String, HBCIPassport) HBCI-Versionsnummer},
+     *     für die ein Kernel-Objekt erzeugt werden soll
+     */
+    public static HBCIKernel getKernel(IHandlerData parentHandlerData, String hbciversion) {
+        return new HBCIKernelImpl(parentHandlerData, hbciversion);
     }
 }

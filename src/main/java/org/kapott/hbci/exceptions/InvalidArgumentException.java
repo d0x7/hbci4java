@@ -1,4 +1,3 @@
-
 /*  $Id: InvalidArgumentException.java,v 1.1 2011/05/04 22:38:01 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -21,12 +20,8 @@
 
 package org.kapott.hbci.exceptions;
 
-
-public final class InvalidArgumentException
-    extends HBCI_Exception
-{
-    public InvalidArgumentException(String msg)
-    {
+public final class InvalidArgumentException extends HBCI_Exception {
+    public InvalidArgumentException(String msg) {
         super(msg);
     }
 }

@@ -1,4 +1,3 @@
-
 /*  $Id: GVTemplate.java,v 1.1 2011/05/04 22:37:52 willuhn Exp $
 
     This file is part of HBCI4Java
@@ -25,18 +24,13 @@ import org.kapott.hbci.GV_Result.HBCIJobResultImpl;
 import org.kapott.hbci.manager.HBCIHandler;
 import org.kapott.hbci.manager.LogFilter;
 
-public final class GVTemplate
-    extends HBCIJobImpl
-{
-    public GVTemplate(String gvname,HBCIHandler handler)
-    {
-        super(handler,gvname,new HBCIJobResultImpl());
+public final class GVTemplate extends HBCIJobImpl {
+    public GVTemplate(String gvname, HBCIHandler handler) {
+        super(handler, gvname, new HBCIJobResultImpl());
     }
-    
-    public void setParam(String paramName,String value)
-    {
-        addConstraint(paramName,paramName,"", LogFilter.FILTER_MOST);
-        super.setParam(paramName,value);
+
+    public void setParam(String paramName, String value) {
+        addConstraint(paramName, paramName, "", LogFilter.FILTER_MOST);
+        super.setParam(paramName, value);
     }
 }
-
